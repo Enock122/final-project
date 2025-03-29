@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare Hospital - Committed to Your Health</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        :root {
+            --primary: #953a57;
+            --secondary: #1d5a9a;
+            --accent: #50b3ef;
+            --light: #f1bb08;
+            --dark: #343a40;
+            --success: #49b8d4;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            color: var(--primary);
+            font-size: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/1600x800');
+            background-size: cover;
+            background-position: center;
+            color: rgb(10, 14, 235);
+            text-align: center;
+            padding: 150px 0;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-btns .btn {
+            margin: 0 10px;
+        }
+
+        /* Services Section */
+        .services-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .services-header h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .service-content {
+            padding: 20px;
+        }
+
+        .service-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Doctors Section */
+        .doctors {
+            background-color: var(--light);
+        }
+
+        .doctors-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .doctors-header h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .doctor-card {
+            background-color: rgb(35, 167, 167);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .doctor-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .doctor-info {
+            padding: 20px;
+        }
+
+        .doctor-info h3 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .doctor-info p {
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: rgb(201, 64, 64);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: white;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .testimonials-header h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .testimonials-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial {
+            min-width: 100%;
+            padding: 30px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .slider-btn {
+            background-color: var(--primary);
+            color: rgb(241, 13, 13);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--light);
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .contact-header h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+
+        .contact-info .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .info-item i {
+            margin-right: 15px;
+            color: var(--primary);
+        }
+
+        .contact-form h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 0;
+        }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: #ddd;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 200;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            overflow: auto;
+        }
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            width: 60%;
+            max-width: 500px;
+            border-radius: 10px;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .modal-header h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 20px 0;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 10px 30px;
+            }
+            .mobile-toggle {
+                display: block;
+            }
+            .hero h2 {
+                font-size: 36px;
+            }
+            .hero p {
+                font-size: 18px;
+            }
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .modal-content {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjUgNUM0MC4yNCA1IDQ1IDE1LjU2IDQ1IDI0Ljk5QzQ1IDM0LjQyIDQwLjI0IDQ1IDI1IDQ1QzkuNzYgNDUgNSAzNC40MiA1IDI0Ljk5QzUgMTUuNTYgOS43NiA1IDI1IDVaIiBmaWxsPSIjMkM3RkNFIi8+PHBhdGggZD0iTTMwIDIwSDIwVjQwSDMwVjIwWiIgZmlsbD0id2hpdGUiLz48cGF0aCBkPSJNMjIuNSAxMEgxNy41VjE3LjVIMTBWMjIuNUgxNy41VjMwSDIyLjVWMjIuNUgzMFYxNy41SDIyLjVWMTBaIiBmaWxsPSJ3aGl0ZSIvPjwvc3ZnPg==" alt="Logo">
+                    <h1>MediCare Hospital</h1>
+                </div>
+                <div class="mobile-toggle">☰</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#doctors">Doctors</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#" class="btn" id="appointment-btn">Appointment</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Your Health Is Our Priority</h2>
+            <p>MediCare Hospital provides exceptional healthcare services with cutting-edge technology and compassionate care for all your medical needs.</p>
+            <div class="hero-btns">
+                <a href="#services" class="btn">Our Services</a>
+                <a href="#" class="btn" id="emergency-btn">Emergency: 911</a>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="services-header">
+                <h2>Our Services</h2>
+                <p>We provide a wide range of medical services to cater to all your healthcare needs.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://via.placeholder.com/400x300');"></div>
+                    <div class="service-content">
+                        <h3>Emergency Care</h3>
+                        <p>24/7 emergency medical services with advanced life support capabilities and rapid response times.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://via.placeholder.com/400x300');"></div>
+                    <div class="service-content">
+                        <h3>Surgery</h3>
+                        <p>State-of-the-art surgical facilities with experienced surgeons specializing in various procedures.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://via.placeholder.com/400x300');"></div>
+                    <div class="service-content">
+                        <h3>Cardiology</h3>
+                        <p>Comprehensive heart care including diagnostics, treatment, and rehabilitation services.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://via.placeholder.com/400x300');"></div>
+                    <div class="service-content">
+                        <h3>Pediatrics</h3>
+                        <p>Specialized care for infants, children, and adolescents with child-friendly facilities.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://via.placeholder.com/400x300');"></div>
+                    <div class="service-content">
+                        <h3>Neurology</h3>
+                        <p>Advanced diagnostics and treatment for neurological disorders by expert neurologists.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://via.placeholder.com/400x300');"></div>
+                    <div class="service-content">
+                        <h3>Orthopedics</h3>
+                        <p>Comprehensive care for bone and joint conditions with rehabilitation facilities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Doctors Section -->
+    <section class="doctors" id="doctors">
+        <div class="container">
+            <div class="doctors-header">
+                <h2>Our Doctors</h2>
+                <p>Meet our team of experienced and dedicated medical professionals.</p>
+            </div>
+            <div class="doctors-grid">
+                <div class="doctor-card">
+                    <div class="doctor-image" style="background-image: url('https://via.placeholder.com/300x350');"></div>
+                    <div class="doctor-info">
+                        <h3>Dr. Maasai Dennis</h3>
+                        <p>Cardiology</p>
+                        <div class="social-links">
+                            <a href="#"><span>f</span></a>
+                            <a href="#"><span>t</span></a>
+                            <a href="#"><span>in</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctor-card">
+                    <div class="doctor-image" style="background-image: url('https://via.placeholder.com/300x350');"></div>
+                    <div class="doctor-info">
+                        <h3>Dr. Roy kirui</h3>
+                        <p>Neurology</p>
+                        <div class="social-links">
+                            <a href="#"><span>f</span></a>
+                            <a href="#"><span>t</span></a>
+                            <a href="#"><span>in</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctor-card">
+                    <div class="doctor-image" style="background-image: url('https://via.placeholder.com/300x350');"></div>
+                    <div class="doctor-info">
+                        <h3>Dr. ryan kipkoech</h3>
+                        <p>Orthopedics</p>
+                        <div class="social-links">
+                            <a href="#"><span>f</span></a>
+                            <a href="#"><span>t</span></a>
+                            <a href="#"><span>in</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="doctor-card">
+                    <div class="doctor-image" style="background-image: url('https://via.placeholder.com/300x350');"></div>
+                    <div class="doctor-info">
+                        <h3>Dr. collins sang</h3>
+                        <p>Pediatrics</p>
+                        <div class="social-links">
+                            <a href="#"><span>f</span></a>
+                            <a href="#"><span>t</span></a>
+                            <a href="#"><span>in</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="testimonials-header">
+                <h2>Patient Testimonials</h2>
+                <p>What our patients say about us.</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonials-container">
+                    <div class="testimonial">
+                        <p>"The care I received at MediCare Hospital was exceptional. The staff was attentive, and the doctors were knowledgeable and compassionate. I couldn't have asked for better treatment during my recovery."</p>
+                        <div class="testimonial-author">- Robert Anderson</div>
+                    </div>
+                    <div class="testimonial">
+                        <p>"When my daughter needed emergency care, the team at MediCare Hospital acted quickly and professionally. Their pediatric department is amazing, and they made a scary situation much easier to handle."</p>
+                        <div class="testimonial-author">- Jennifer Williams</div>
+                    </div>
+                    <div class="testimonial">
+                        <p>"After my surgery, the follow-up care at MediCare Hospital was outstanding. The nurses were always available to answer questions, and my surgeon checked on me regularly. I'm grateful for their dedication."</p>
+                        <div class="testimonial-author">- David Thompson</div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <div class="slider-btn prev-btn">❮</div>
+                    <div class="slider-btn next-btn">❯</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-header">
+                <h2>Contact Us</h2>
+                <p>Get in touch with us for any inquiries or to schedule an appointment.</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="info-item">
+                        <i>📍</i>
+                        <p>123 Medical Center Dr, Healthcare City</p>
+                    </div>
+                    <div class="info-item">
+                        <i>📞</i>
+                        <p>+25470001920</p>
+                    </div>
+                    <div class="info-item">
+                        <i>✉️</i>
+                        <p>info@medicarehospital.com</p>
+                    </div>
+                    <div class="info-item">
+                        <i>🕒</i>
+                        <p>Emergency: 24/7<br>General Hours: Mon-Fri: 8am-6pm</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>MediCare Hospital</h3>
+                    <p>Providing quality healthcare services with compassion and excellence since 1985.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#doctors">Doctors</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Emergency Care</a></li>
+                        <li><a href="#">Surgery</a></li>
+                        <li><a href="#">Cardiology</a></li>
+                        <li><a href="#">Pediatrics</a></li>
+                        <li><a href="#">Orthopedics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MediCare Hospital. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Appointment Modal -->
+    <div class="modal" id="appointmentModal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <h2>Book an Appointment</h2>
+            </div>
+            <form id="appointmentForm">
+                <div class="form-group">
+                    <label for="appt-name">Full Name</label>
+                    <input type="text" id="appt-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="appt-email">Email</label>
+                    <input type="email" id="appt-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="appt-phone">Phone Number</label>
+                    <input type="tel" id="appt-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="appt-date">Preferred Date</label>
+                    <input type="date" id="appt-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="appt-time">Preferred Time</label>
+                    <input type="time" id="appt-time" required>
+                </div>
+                <div class="form-group">
+                    <label for="appt-dept">Department</label>
+                    <select id="appt-dept" required>
+                        <option value="">Select Department</option>
+                        <option value="cardiology">Cardiology</option>
+                        <option value="neurology">Neurology</option>
+                        <option value="orthopedics">Orthopedics</option>
+                        <option value="pediatrics">Pediatrics</option>
+                        <option value="general">General Checkup</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="appt-message">Additional Information</label>
+                    <textarea id="appt-message"></textarea>
+                </div>
+                <button type="submit" class="btn">Book Appointment</button>
+            </form>
+        </div>
+    </div>
