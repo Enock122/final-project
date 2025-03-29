@@ -1,0 +1,39 @@
+MediCare Hospital Website
+Project Overview
+This project is a responsive website for MediCare Hospital, providing information about services, doctors, patient testimonials, and contact details for inquiries.
+
+Features
+Home Page: Displays an overview of the hospital and its key services.
+Services Page: Lists medical services offered by the hospital.
+Doctors Page: Showcases hospital doctors with their specializations.
+Testimonials Page: Displays patient reviews and success stories.
+Contact Us Page: Enables users to reach out via a form, phone number, or email.
+Appointment Booking: Allows users to schedule medical appointments.
+Responsive Design: Works on different devices (desktop, tablet, and mobile).
+Image Slideshow: Interactive image slider on the homepage.
+Form Validation: Ensures proper submission of contact details and appointment forms.
+
+Technologies Used
+HTML5: For structuring the pages.
+CSS3: For styling and layout.
+JavaScript: For interactivity and form handling.
+
+How to Run the Project
+Download the project folder.
+Open the index.html file in a web browser.
+
+Deployment
+The website is deployed on:
+ https://enock122.github.io/final-project/#services
+
+Contact
+Contact Information
+📍
+123 Medical Center Dr, Healthcare City
+📞
++25470001920
+✉️
+info@medicarehospital.com
+🕒
+Emergency: 24/7
+General Hours: Mon-Fri: 8am-6pm
